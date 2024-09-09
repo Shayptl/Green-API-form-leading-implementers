@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>טופס Green API - מטמיעים מובילים</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
+
+    :root {
+      --primary-color: #27ae60;
+      --secondary-color: #2c3e50;
+      --background-color: #f5f7fa;
+      --text-color: #333;
+      --container-width: 95%;
+      --container-max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: linear-gradient(135deg, var(--background-color) 0%, #c3cfe2 100%);
+      color: var(--text-color);
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 10px;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: var(--container-width);
+      max-width: var(--container-max-width);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 70px;
+      height: auto;
+    }
+
+    h1 {
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+    }
+
+    p {
+      margin-bottom: 15px;
+      font-weight: 300;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+    }
+
+    .highlight {
+      color: var(--primary-color);
+      font-weight: 400;
+    }
+
+    .emoji {
+      font-size: 1.2em;
+      margin: 0 5px;
+    }
+
+    .btn {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .btn:hover {
+      background-color: #2ecc71;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+    }
+
+    #userForm {
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    #userForm .form-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    #userForm .form-group label {
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: clamp(1rem, 3vw, 1.1rem);
+    }
+
+    #userForm input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: clamp(1rem, 3vw, 1.1rem);
+    }
+
+    #userForm button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 20px auto 0;
+      display: block;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    #userForm button:hover {
+      background-color: #2ecc71;
+    }
+
+    #thankYouMessage {
+      display: none;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      margin-top: 20px;
+      color: var(--primary-color);
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 40px;
+      }
+
+      #userForm .form-group {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      #userForm .form-group label {
+        flex: 0 0 200px;
+        margin-left: 10px;
+        margin-bottom: 0;
+      }
+
+      #userForm input {
+        flex: 1;
+      }
+
+      .btn {
+        width: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="https://i.ibb.co/f8XrnHj/image.png" alt="Green API Logo" class="logo">
+    <div id="initialContent">
+      <h1>היי חברים יקרים! <span class="emoji">👋</span></h1>
+      <p>כנציג של <span class="highlight">Green API</span> בישראל, אני שמח להודיע שאנחנו מתכננים להעניק
+        <span class="highlight">מתנה מיוחדת למטמיעים המובילים שלנו</span>. זו דרכנו להביע את הערכתנו העמוקה לשיתוף
+        הפעולה המתמשך והמוצלח שלנו.
+      </p>
+      <p>הטופס הזה נועד לעזור לנו להבין טוב יותר את היקף הפעילות שלכם עם Green API, ובמיוחד את מספר הלקוחות שהבאתם
+        לשירות. המידע שתספקו יסייע לנו לזהות את המטמיעים שיזכו במתנה.</p>
+      <p>כל תשובה חשובה לנו ותתרום לחיזוק הקשר בינינו. אנחנו מעריכים מאוד את הזמן והמחשבה שאתם משקיעים!</p>
+      <p>תודה רבה על שיתוף הפעולה, ובואו נמשיך לצמוח ולהצליח יחד! <span class="emoji">🚀💚</span></p>
+      <button id="showFormBtn" class="btn">למילוי הטופס</button>
+    </div>
+
+    <div id="formContent" style="display: none;">
+      <p>תודה רבה שאתם מקדישים מזמנכם למלא את הטופס הזה.<span class="emoji">🙏🏻</span></p>
+      <form id="userForm">
+        <div class="form-group">
+          <label for="userName">שם מלא:</label>
+          <input type="text" id="userName" required>
+        </div>
+        <div class="form-group">
+          <label for="userPhone">מספר טלפון:</label>
+          <input type="tel" id="userPhone" required>
+        </div>
+        <div class="form-group">
+          <label for="customerCount">כמות לקוחות שהבאת לשירות:</label>
+          <input type="number" id="customerCount" required>
+        </div>
+        <div class="form-group">
+          <label for="userNote">משהו שתרצה להוסיף:</label>
+          <input type="text" id="userNote">
+        </div>
+        <button type="submit">שלח</button>
+      </form>
+    </div>
+
+    <div id="thankYouMessage" class="thank-you">
+      <p>תודה רבה על המענה! הטופס נשלח בהצלחה.</p>
+      <button id="backToFormBtn" class="btn">למילוי טופס נוסף</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('showFormBtn').addEventListener('click', function() {
+        document.getElementById('initialContent').style.display = 'none';
+        document.getElementById('formContent').style.display = 'block';
+    });
+
+    document.getElementById('userForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const userName = document.getElementById('userName').value;
+        const userPhone = document.getElementById('userPhone').value;
+        const customerCount = document.getElementById('customerCount').value;
+        const userNote = document.getElementById('userNote').value;
+
+        // שליחה ל-webhook
+        const webhookUrl = 'https://hook.integrator.boost.space/tzq8fgw1ohr94f9x2kjdungwb62g5kfy';
+
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: userName,
+                phone: userPhone,
+                customers: customerCount,
+                note: userNote
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(() => {
+            document.getElementById('formContent').style.display = 'none';
+            document.getElementById('thankYouMessage').style.display = 'block';
+            document.getElementById('userForm').reset();
+            
+            // הפעלת אנימציית הקונפטי
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 30 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        })
+        .catch((error) => {
+            console.error('שגיאה בשליחה ל-webhook:', error);
+            alert('אירעה שגיאה בשליחת הטופס. אנא נסה שוב מאוחר יותר.');
+        });
+    });
+
+    document.getElementById('backToFormBtn').addEventListener('click', function() {
+        document.getElementById('thankYouMessage').style.display = 'none';
+        document.getElementById('formContent').style.display = 'block';
+        document.getElementById('userForm').reset();
+    });
+  </script>
+</body>
+
+</html>
