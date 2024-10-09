@@ -5,179 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>טופס Green API - מטמיעים מובילים</title>
+  <link rel="icon" href="https://i.ibb.co/f8XrnHj/image.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+
+  <meta property="og:title" content="טופס Green API - מטמיעים מובילים">
+  <meta property="og:image" content="https://i.ibb.co/f8XrnHj/image.png">
+  <meta property="og:url" content="https://shayptl.github.io/automation-news">
+  <meta property="og:type" content="website">
+  
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
-
-    :root {
-      --primary-color: #27ae60;
-      --secondary-color: #2c3e50;
-      --background-color: #f5f7fa;
-      --text-color: #333;
-      --container-width: 95%;
-      --container-max-width: 800px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Heebo', sans-serif;
-      background: linear-gradient(135deg, var(--background-color) 0%, #c3cfe2 100%);
-      color: var(--text-color);
-      line-height: 1.6;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 10px;
-    }
-
-    .container {
-      background-color: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      width: var(--container-width);
-      max-width: var(--container-max-width);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .logo {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 70px;
-      height: auto;
-    }
-
-    h1 {
-      color: var(--secondary-color);
-      margin-bottom: 20px;
-      font-weight: 700;
-      font-size: clamp(1.8rem, 5vw, 2.5rem);
-    }
-
-    p {
-      margin-bottom: 15px;
-      font-weight: 300;
-      font-size: clamp(1rem, 3vw, 1.2rem);
-    }
-
-    .highlight {
-      color: var(--primary-color);
-      font-weight: 400;
-    }
-
-    .emoji {
-      font-size: 1.2em;
-      margin: 0 5px;
-    }
-
-    .btn {
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: clamp(1rem, 3vw, 1.2rem);
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 20px;
-      width: 100%;
-      max-width: 300px;
-    }
-
-    .btn:hover {
-      background-color: #2ecc71;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
-    }
-
-    #userForm {
-      text-align: right;
-      margin-top: 20px;
-    }
-
-    #userForm .form-group {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-
-    #userForm .form-group label {
-      margin-bottom: 8px;
-      font-weight: 500;
-      font-size: clamp(1rem, 3vw, 1.1rem);
-    }
-
-    #userForm input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: clamp(1rem, 3vw, 1.1rem);
-    }
-
-    #userForm button {
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: clamp(1rem, 3vw, 1.2rem);
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin: 20px auto 0;
-      display: block;
-      width: 100%;
-      max-width: 300px;
-    }
-
-    #userForm button:hover {
-      background-color: #2ecc71;
-    }
-
-    #thankYouMessage {
-      display: none;
-      font-size: clamp(1.2rem, 3vw, 1.5rem);
-      margin-top: 20px;
-      color: var(--primary-color);
-    }
-
-    @media (min-width: 768px) {
-      .container {
-        padding: 40px;
-      }
-
-      #userForm .form-group {
-        flex-direction: row;
-        align-items: center;
-      }
-
-      #userForm .form-group label {
-        flex: 0 0 200px;
-        margin-left: 10px;
-        margin-bottom: 0;
-      }
-
-      #userForm input {
-        flex: 1;
-      }
-
-      .btn {
-        width: auto;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -298,6 +134,7 @@
         document.getElementById('userForm').reset();
     });
   </script>
+  <script src="script.js"></script>
 </body>
 
 </html>
